@@ -12,4 +12,15 @@
         android:text="Camera"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Camera Scan"
+        android:id="@+id/btn_fragment_camera_start"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

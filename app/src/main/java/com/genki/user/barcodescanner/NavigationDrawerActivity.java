@@ -111,6 +111,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
 
             case 2:
                 Toast.makeText(getApplicationContext(),"Camera Click",Toast.LENGTH_SHORT).show();
+                fragment=new FragmentCamera();
                 break;
 
             default:
