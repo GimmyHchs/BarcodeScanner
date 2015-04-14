@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class NevigationDrawerActivity extends ActionBarActivity {
+public class NavigationDrawerActivity extends ActionBarActivity {
 
     private DrawerLayout layDrawer;
     private ListView lstDrawer;
@@ -32,12 +32,13 @@ public class NevigationDrawerActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.nevigetiondraweractivity_main);
+        //setContentView(R.layout.navigetiondraweractivity_main);
 
         initActionBar();
         initDrawer();
         initDrawerList();
-        findAllView();
+        initHomeFragment();
+        findAllView();//unused function
       //  initActivity();
       //  setAllListener();
 
@@ -49,7 +50,7 @@ public class NevigationDrawerActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
     private void initDrawer(){
-        setContentView(R.layout.nevigetiondraweractivity_main);
+        setContentView(R.layout.navigetiondraweractivity_main);
 
         layDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         lstDrawer = (ListView) findViewById(R.id.left_drawer);
@@ -88,6 +89,11 @@ public class NevigationDrawerActivity extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, drawer_menu);
         lstDrawer.setAdapter(adapter);
         lstDrawer.setOnItemClickListener(new DrawerItemClickListener());
+    }
+    private void initHomeFragment(){
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new FragmentHome()).commit();
+
     }
     private void selectItem(int position) {
         Fragment fragment=null;
