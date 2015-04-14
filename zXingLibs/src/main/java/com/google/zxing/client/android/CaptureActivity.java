@@ -73,6 +73,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.Map;
+import java.util.Vector;
 
 /**
  * This activity opens the camera and does the actual scanning on a background thread. It draws a
@@ -119,6 +120,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private BeepManager beepManager;
   private AmbientLightManager ambientLightManager;
   private HttpRequestToSMSServer httpRequestToSMSServer;
+  private Vector<String> historyBarcodeVector;
 
 
   ViewfinderView getViewfinderView() {
@@ -136,7 +138,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-
+    historyBarcodeVector=new Vector<String>();
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.capture);
@@ -447,9 +449,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       case PRODUCT_SEARCH_LINK:
 
         //handleDecodeExternally(rawResult, resultHandler, barcode);
-          httpRequestToSMSServer=new HttpRequestToSMSServer(this,capture_handler,rawResult.getText());
-          httpRequestToSMSServer.httpRequest();
-
+          if(historyBarcodeVector.contains(rawResult.getText())){
+              Toast.makeText(getApplication(),"此卡片已掃描",Toast.LENGTH_SHORT).show();
+          }else {
+              historyBarcodeVector.add(rawResult.getText());
+              httpRequestToSMSServer = new HttpRequestToSMSServer(this, capture_handler, rawResult.getText());
+              httpRequestToSMSServer.httpRequest();
+          }
           restartPreviewAfterDelay(1500L);
 
         break;
