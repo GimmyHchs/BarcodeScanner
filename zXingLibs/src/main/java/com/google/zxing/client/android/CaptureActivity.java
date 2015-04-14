@@ -138,11 +138,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-    historyBarcodeVector=new Vector<String>();
+
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.capture);
-
+    historyBarcodeVector=new Vector<String>();
 
     capture_handler = new Handler(){
         @Override
