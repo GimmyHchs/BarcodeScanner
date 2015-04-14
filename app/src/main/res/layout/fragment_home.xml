@@ -3,13 +3,154 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/tv_fragment_home_test"
+
+
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Home"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:background="@drawable/background_book"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Home"
+            android:id="@+id/textView"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+
+            android:id="@+id/textView2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="4dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="32dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignLeft="@+id/relativeLayout"
+        android:layout_alignStart="@+id/relativeLayout"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        android:id="@+id/relativeLayout2">
+
+        <TextView
+            android:id="@+id/tv_fragment_home_test"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Home"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        </RelativeLayout>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/iv_fragment_home_bluetooth"
+        android:background="@drawable/background_bluetooth"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignLeft="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/relativeLayout2" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_fragment_home_bluetooth"
+        android:layout_alignLeft="@+id/iv_fragment_home_bluetooth"
+        android:layout_alignStart="@+id/iv_fragment_home_bluetooth"
+        android:layout_alignRight="@+id/iv_fragment_home_bluetooth"
+        android:background="#FFFFFF"
+        android:layout_alignEnd="@+id/iv_fragment_home_bluetooth">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bluetooth"
+            android:id="@+id/textView3"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView4"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="4dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/iv_fragment_home_camera"
+        android:layout_alignTop="@+id/iv_fragment_home_bluetooth"
+        android:layout_alignRight="@+id/relativeLayout2"
+        android:layout_alignEnd="@+id/relativeLayout2"
+        android:background="@drawable/background_camera" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_fragment_home_camera"
+        android:layout_alignLeft="@+id/iv_fragment_home_camera"
+        android:layout_alignStart="@+id/iv_fragment_home_camera"
+        android:layout_alignRight="@+id/relativeLayout2"
+        android:layout_alignEnd="@+id/relativeLayout2"
+        android:background="#FFFFFF"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Camera"
+            android:id="@+id/textView5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView6"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="4dp" />
+    </RelativeLayout>
 
 </RelativeLayout>

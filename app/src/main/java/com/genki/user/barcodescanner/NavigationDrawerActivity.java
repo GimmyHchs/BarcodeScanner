@@ -119,8 +119,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
                 return;
         }
         if(fragment!=null){
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame,fragment).commit();
+            replaceContentView(fragment);
         }
         // 更新被選擇項目，換標題文字，關閉選單
         lstDrawer.setItemChecked(position, true);
@@ -141,6 +140,19 @@ public class NavigationDrawerActivity extends ActionBarActivity {
     }
     private void findAllView(){
 
+    }
+    private void replaceToHomePage(){
+
+    }
+    private void replaceToBluetoothPage(){
+
+    }
+    private void replaceToCameraPage(){
+
+    }
+    private void replaceContentView(Fragment fragment){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame,fragment).commit();
     }
 
 

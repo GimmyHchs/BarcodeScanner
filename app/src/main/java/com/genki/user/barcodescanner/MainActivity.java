@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -29,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView tv_record;
     private EditText ed;
     private Button btn_start, btn_stop,btn_camerascan;
+
 
     private HttpRequestToSMSServer requestToSMSServer;
 
