@@ -48,6 +48,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
     private void initActionBar(){
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("BarcodeScanner");
     }
     private void initDrawer(){
         setContentView(R.layout.navigetiondraweractivity_main);
