@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.ActionBarDrawerToggle;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,6 @@ public class NavigationDrawerActivity extends ActionBarActivity {
         findAllView();//unused function
       //  initActivity();
       //  setAllListener();
-
 
 
     }
@@ -152,7 +152,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
     }
     private void replaceContentView(Fragment fragment){
         FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,fragment).commit();
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame, fragment).commit();
     }
 
 

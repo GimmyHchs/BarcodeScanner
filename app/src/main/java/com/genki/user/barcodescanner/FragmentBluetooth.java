@@ -179,6 +179,7 @@ public class FragmentBluetooth extends Fragment {
             btn_stop.setEnabled(false);
             btn_start.setEnabled(true);
             ed_input.setEnabled(false);
+            tv_record.setText("");
         }
     };
     private String getEditTextString() {

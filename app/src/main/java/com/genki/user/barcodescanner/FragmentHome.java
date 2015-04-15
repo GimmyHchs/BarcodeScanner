@@ -64,6 +64,8 @@ public class FragmentHome extends Fragment {
         public void onClick(View v) {
             FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
             fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,new FragmentBluetooth()).commit();
+            ActionBarActivity actionBarActivity=(ActionBarActivity)getActivity();
+            actionBarActivity.getSupportActionBar().setTitle("Bluetooth");
         }
     };
     private View.OnClickListener replaceToCamera = new View.OnClickListener() {
@@ -71,6 +73,8 @@ public class FragmentHome extends Fragment {
         public void onClick(View v) {
             FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
             fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,new FragmentCamera()).commit();
+            ActionBarActivity actionBarActivity=(ActionBarActivity)getActivity();
+            actionBarActivity.getSupportActionBar().setTitle("Bluetooth");
         }
     };
 }
