@@ -65,13 +65,13 @@ public class FragmentBluetooth extends Fragment {
                 //這裡執行收到伺服器回應後的動作
 
                 tv_record.setText(tv_record.getText().toString()+"\r\n"
-                        +"姓名 :"+httpRequestToSMSServer.getName()
-                        +"   時間 :"+httpRequestToSMSServer.getArrived_at());
+                        +httpRequestToSMSServer.getName()
+                        +"\r\n時間 :"+httpRequestToSMSServer.getArrived_at());
 
             }
 
         };
-
+        tv_record.setText("");
         ed_input.setText("");
         ed_input.setEnabled(false);
         btn_stop.setEnabled(false);

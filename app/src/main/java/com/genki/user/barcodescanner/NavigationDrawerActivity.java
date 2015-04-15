@@ -152,7 +152,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
     }
     private void replaceContentView(Fragment fragment){
         FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame,fragment).commit();
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,fragment).commit();
     }
 
 

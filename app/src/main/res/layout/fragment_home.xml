@@ -83,6 +83,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:id="@+id/rl_fragment_home_bluetooth_background"
         android:layout_below="@+id/iv_fragment_home_bluetooth"
         android:layout_alignLeft="@+id/iv_fragment_home_bluetooth"
         android:layout_alignStart="@+id/iv_fragment_home_bluetooth"
@@ -95,7 +96,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Bluetooth"
-            android:id="@+id/textView3"
+            android:id="@+id/tv_fragment_home_bluetooth_large"
             android:layout_marginLeft="8dp" />
 
         <TextView
@@ -103,7 +104,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
-            android:id="@+id/textView4"
+            android:id="@+id/tv_fragment_home_bluetooth_small"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -127,6 +128,7 @@
         android:layout_alignStart="@+id/iv_fragment_home_camera"
         android:layout_alignRight="@+id/relativeLayout2"
         android:layout_alignEnd="@+id/relativeLayout2"
+        android:id="@+id/rl_fragment_home_camera_background"
         android:background="#FFFFFF"
         >
 
@@ -135,7 +137,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Camera"
-            android:id="@+id/textView5"
+            android:id="@+id/tv_fragment_home_camera_large"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -146,7 +148,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
-            android:id="@+id/textView6"
+            android:id="@+id/tv_fragment_home_camera_small"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

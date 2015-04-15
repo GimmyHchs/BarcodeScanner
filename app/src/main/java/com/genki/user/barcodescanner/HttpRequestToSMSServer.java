@@ -69,8 +69,8 @@ public class HttpRequestToSMSServer extends Volley {
                             name = new JSONObject(response.toString()).getString("name");
                             arrived_at = new JSONObject(response.toString()).getString("arrived_at");
                             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            Date date = new Date(System.currentTimeMillis());
-                            arrived_at = dateFormat.format(date);
+                            //Date date = new Date(System.currentTimeMillis());
+                            arrived_at = dateFormat.format(arrived_at);
 
                             //傳送MessageH，觸發handler
                             handler.sendMessage(new Message());
