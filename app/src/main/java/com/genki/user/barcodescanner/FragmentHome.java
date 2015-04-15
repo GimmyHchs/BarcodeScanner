@@ -74,7 +74,7 @@ public class FragmentHome extends Fragment {
             FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
             fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,new FragmentCamera()).commit();
             ActionBarActivity actionBarActivity=(ActionBarActivity)getActivity();
-            actionBarActivity.getSupportActionBar().setTitle("Bluetooth");
+            actionBarActivity.getSupportActionBar().setTitle("Camera");
         }
     };
 }
