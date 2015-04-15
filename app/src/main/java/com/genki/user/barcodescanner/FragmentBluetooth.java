@@ -118,6 +118,8 @@ public class FragmentBluetooth extends Fragment {
             scanText += ".";
         }
         tv_record.setText("Scanning"+scanText);
+        if(threadSwitch==false)
+            tv_record.setText("");
     }
     private View.OnClickListener start_btn_listener = new View.OnClickListener() {
         @Override
