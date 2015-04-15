@@ -9,8 +9,9 @@
         android:layout_height="wrap_content"
         android:text="Bluetooth"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/btn_fragment_bluetooth_start"
+        android:layout_toEndOf="@+id/btn_fragment_bluetooth_start" />
     <EditText
 
         android:layout_width="200dp"

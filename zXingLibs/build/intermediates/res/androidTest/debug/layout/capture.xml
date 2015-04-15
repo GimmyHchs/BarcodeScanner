@@ -193,9 +193,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/tc_capture_activity"
         android:background="@color/transparent"
-        android:textSize="80sp"
+        android:textSize="70sp"
         android:textColor="@color/status_text"
-        android:layout_gravity="bottom|center_horizontal" />
+        android:layout_gravity="bottom|center_horizontal"
+       android:paddingBottom="8dp" />
   <TextView android:id="@+id/status_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -8,14 +8,17 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 public class FragmentBluetooth extends Fragment {
@@ -30,6 +33,9 @@ public class FragmentBluetooth extends Fragment {
 
     private Thread checkThread;
     private HttpRequestToSMSServer httpRequestToSMSServer;
+
+    private String scanText;
+    private int loopcount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,10 +69,27 @@ public class FragmentBluetooth extends Fragment {
             public void handleMessage(Message msg){
 
                 //這裡執行收到伺服器回應後的動作
-
+                /*
                 tv_record.setText(tv_record.getText().toString()+"\r\n"
                         +httpRequestToSMSServer.getName()
-                        +"\r\n時間 :"+httpRequestToSMSServer.getArrived_at());
+                        +"\r\n時間 :"+httpRequestToSMSServer.getArrived_at());*/
+                LayoutInflater inflater = (LayoutInflater)
+                        getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view = inflater.inflate(R.layout.toast_bluetooth, (ViewGroup) getActivity().findViewById(R.id.toast_bluetooth_root));
+                TextView studentName = (TextView) view.findViewById(R.id.toast_bluetooth_name);
+                TextView studentArrivedAt = (TextView) view.findViewById(R.id.toast_bluetooth_date);
+
+                String str_date =httpRequestToSMSServer.getArrived_at();
+
+                studentName.setText(httpRequestToSMSServer.getName());
+                studentArrivedAt.setText(str_date);
+
+                Toast toast = new Toast(getActivity().getApplicationContext());
+                toast.setView(view);
+                toast.setGravity(Gravity.TOP, 0, 0);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.show();
+
 
             }
 
@@ -76,6 +99,7 @@ public class FragmentBluetooth extends Fragment {
         ed_input.setEnabled(false);
         btn_stop.setEnabled(false);
         threadSwitch = false;
+        loopcount=0;
     }
     private void setAllListener(){
 
@@ -83,24 +107,48 @@ public class FragmentBluetooth extends Fragment {
         btn_stop.setOnClickListener(stop_btn_listener);
 
     }
+    private void scanTextAnimation(){
+
+        if(loopcount>=3){
+            loopcount=0;
+            scanText="";
+        }
+        else {
+            loopcount++;
+            scanText += ".";
+        }
+        tv_record.setText("Scanning"+scanText);
+    }
     private View.OnClickListener start_btn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //starting entering
             Log.d("BluetoothInput App==>", "Start listening enter words");
+
             threadSwitch = true;
+
             ed_input.setEnabled(true);
             ed_input.requestFocus();
             btn_start.setEnabled(false);
             btn_stop.setEnabled(true);
+            tv_record.setText("Scanning");
+            loopcount=0;
+            scanText="";
             checkThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     Looper.prepare();
                     try {
+
                         do {
 
                             Thread.sleep(1000);
+                            mhandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scanTextAnimation();
+                                }
+                            });
                             if (isFormal(getEditTextString()))
                                 mhandler.post(new Runnable() {
                                     @Override
@@ -161,9 +209,15 @@ public class FragmentBluetooth extends Fragment {
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+        threadSwitch=false;
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
-        //確保Thread確保Thread不再繼續執行
+        //確保Thread不再繼續執行
         threadSwitch=false;
     }
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/toast_layout_root"
+    android:id="@+id/toast_bluetooth_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:padding="10dp" >
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/toast_bluetooth_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Large Text"
@@ -17,12 +17,13 @@
         android:textSize="48sp" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/toast_bluetooth_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#666666"
         android:textSize="32sp" />
 
-</LinearLayout>  <!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/layout/toast_layout.xml -->
+</LinearLayout>  
