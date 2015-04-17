@@ -71,7 +71,7 @@ public class HttpRequestToSMSServer extends Volley {
                             arrived_at = dateFormat.format(date);
 
                             //傳送MessageH，觸發handler
-                            Toast.makeText(context,name,Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context,name,Toast.LENGTH_SHORT).show();
                             handler.sendMessage(new Message());
 
 

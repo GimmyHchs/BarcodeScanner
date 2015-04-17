@@ -10,11 +10,11 @@
         android:id="@+id/toast_bluetooth_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
+        android:text="測試君"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF00FF00"
         android:layout_gravity="center_horizontal"
-        android:textSize="48sp" />
+        android:textSize="96sp" />
 
     <TextView
         android:id="@+id/toast_bluetooth_date"

@@ -17,9 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 
 public class FragmentBluetooth extends Fragment {
 
@@ -49,8 +46,7 @@ public class FragmentBluetooth extends Fragment {
         findAllView();
         initFragment();
         setAllListener();
-
-    }
+        }
 
     private void findAllView(){
         ed_input = (EditText) getActivity().findViewById(R.id.et_fragment_bluetooth_input);
@@ -73,22 +69,9 @@ public class FragmentBluetooth extends Fragment {
                 tv_record.setText(tv_record.getText().toString()+"\r\n"
                         +httpRequestToSMSServer.getName()
                         +"\r\n時間 :"+httpRequestToSMSServer.getArrived_at());*/
-                LayoutInflater inflater = (LayoutInflater)
-                        getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.toast_bluetooth, (ViewGroup) getActivity().findViewById(R.id.toast_bluetooth_root));
-                TextView studentName = (TextView) view.findViewById(R.id.toast_bluetooth_name);
-                TextView studentArrivedAt = (TextView) view.findViewById(R.id.toast_bluetooth_date);
 
-                String str_date =httpRequestToSMSServer.getArrived_at();
-
-                studentName.setText(httpRequestToSMSServer.getName());
-                studentArrivedAt.setText(str_date);
-
-                Toast toast = new Toast(getActivity().getApplicationContext());
-                toast.setView(view);
-                toast.setGravity(Gravity.TOP, 0, 0);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.show();
+                BigToast t=new BigToast(context,httpRequestToSMSServer.getName(),httpRequestToSMSServer.getArrived_at());
+                t.show();
 
 
             }
@@ -107,18 +90,17 @@ public class FragmentBluetooth extends Fragment {
         btn_stop.setOnClickListener(stop_btn_listener);
 
     }
-    private void scanTextAnimation(){
+    private void scanTextAnimation() {
 
-        if(loopcount>=3){
-            loopcount=0;
-            scanText="";
-        }
-        else {
+        if (loopcount >= 3) {
+            loopcount = 0;
+            scanText = "";
+        } else {
             loopcount++;
             scanText += ".";
         }
-        tv_record.setText("Scanning"+scanText);
-        if(threadSwitch==false)
+        tv_record.setText("Scanning" + scanText);
+        if (threadSwitch == false)
             tv_record.setText("");
     }
     private View.OnClickListener start_btn_listener = new View.OnClickListener() {

@@ -25,14 +25,12 @@ import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.clipboard.ClipboardInterface;
-import com.google.zxing.client.android.history.HistoryActivity;
 import com.google.zxing.client.android.history.HistoryItem;
 import com.google.zxing.client.android.history.HistoryManager;
 import com.google.zxing.client.android.result.ResultButtonListener;
 import com.google.zxing.client.android.result.ResultHandler;
 import com.google.zxing.client.android.result.ResultHandlerFactory;
 import com.google.zxing.client.android.result.supplement.SupplementalInfoRetriever;
-import com.google.zxing.client.android.share.ShareActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -50,12 +48,7 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -68,7 +61,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
@@ -135,6 +127,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     return cameraManager;
   }
 
+  private Context context;
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
@@ -142,28 +135,18 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.capture);
+   context=this;
+
     historyBarcodeVector=new Vector<String>();
 
     capture_handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            LayoutInflater inflater = (LayoutInflater)
-                    getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            View view = inflater.inflate(R.layout.toast_layout, (ViewGroup) findViewById(R.id.toast_layout_root));
-            TextView studentName = (TextView) view.findViewById(R.id.name);
-            TextView studentArrivedAt = (TextView) view.findViewById(R.id.date);
-            studentName.setText(httpRequestToSMSServer.getName());
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
-            String str_date =dateFormat.format(date);
-            studentArrivedAt.setText(str_date);
-            Toast toast = new Toast(getApplicationContext());
-            toast.setView(view);
-            toast.setGravity(Gravity.TOP, 0, 0);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.show();
+            zXingBigToast t=new zXingBigToast(context,httpRequestToSMSServer.getName(),httpRequestToSMSServer.getArrived_at());
+            t.show();
+
         }
     };
     hasSurface = false;
@@ -450,7 +433,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         //handleDecodeExternally(rawResult, resultHandler, barcode);
           if(historyBarcodeVector.contains(rawResult.getText())){
-              Toast.makeText(getApplication(),"此卡片已掃描",Toast.LENGTH_SHORT).show();
+              zXingBigToast t=new zXingBigToast(this,"卡片已掃描","");
+              t.show();
           }else {
               historyBarcodeVector.add(rawResult.getText());
               httpRequestToSMSServer = new HttpRequestToSMSServer(this, capture_handler, rawResult.getText());

@@ -101,17 +101,17 @@ public class NavigationDrawerActivity extends ActionBarActivity {
 
         switch (position) {
             case 0:
-                Toast.makeText(getApplicationContext(),"Home Click",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Home Click",Toast.LENGTH_SHORT).show();
                 fragment = new FragmentHome();
                 break;
 
             case 1:
-                Toast.makeText(getApplicationContext(),"Bluetooth Click",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Bluetooth Click",Toast.LENGTH_SHORT).show();
                 fragment = new FragmentBluetooth();
                 break;
 
             case 2:
-                Toast.makeText(getApplicationContext(),"Camera Click",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Camera Click",Toast.LENGTH_SHORT).show();
                 fragment=new FragmentCamera();
                 break;
 
