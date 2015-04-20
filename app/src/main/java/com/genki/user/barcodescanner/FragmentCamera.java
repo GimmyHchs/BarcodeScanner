@@ -30,7 +30,7 @@ public class FragmentCamera extends Fragment {
         findAllView();
         initFragment();
         setAllListener();
-
+        changeToCaptureActivity();
 
     }
     private void findAllView(){
@@ -51,9 +51,13 @@ public class FragmentCamera extends Fragment {
     private View.OnClickListener btn_start_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            IntentIntegrator integrator = new IntentIntegrator(getActivity());
-            integrator.initiateScan(IntentIntegrator.ALL_CODE_TYPES);
+            changeToCaptureActivity();
         }
     };
+    private void changeToCaptureActivity(){
+
+        IntentIntegrator integrator = new IntentIntegrator(getActivity());
+        integrator.initiateScan(IntentIntegrator.ALL_CODE_TYPES);
+    }
 
 }

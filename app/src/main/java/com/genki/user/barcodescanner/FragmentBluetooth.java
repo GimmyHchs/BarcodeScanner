@@ -46,6 +46,7 @@ public class FragmentBluetooth extends Fragment {
         findAllView();
         initFragment();
         setAllListener();
+        start_bluetooth_scan();
         }
 
     private void findAllView(){
@@ -103,55 +104,57 @@ public class FragmentBluetooth extends Fragment {
         if (threadSwitch == false)
             tv_record.setText("");
     }
-    private View.OnClickListener start_btn_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //starting entering
-            Log.d("BluetoothInput App==>", "Start listening enter words");
+    private void start_bluetooth_scan(){
+        //starting entering
+        Log.d("BluetoothInput App==>", "Start listening enter words");
 
-            threadSwitch = true;
+        threadSwitch = true;
 
-            ed_input.setEnabled(true);
-            ed_input.requestFocus();
-            btn_start.setEnabled(false);
-            btn_stop.setEnabled(true);
-            tv_record.setText("Scanning");
-            loopcount=0;
-            scanText="";
-            checkThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Looper.prepare();
-                    try {
+        ed_input.setEnabled(true);
+        ed_input.requestFocus();
+        btn_start.setEnabled(false);
+        btn_stop.setEnabled(true);
+        tv_record.setText("Scanning");
+        loopcount=0;
+        scanText="";
+        checkThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                try {
 
-                        do {
+                    do {
 
-                            Thread.sleep(1000);
+                        Thread.sleep(1000);
+                        mhandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                scanTextAnimation();
+                            }
+                        });
+                        if (isFormal(getEditTextString()))
                             mhandler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    scanTextAnimation();
+                                    onInputIsCorrect();
                                 }
                             });
-                            if (isFormal(getEditTextString()))
-                                mhandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        onInputIsCorrect();
-                                    }
-                                });
-                        } while (threadSwitch);
+                    } while (threadSwitch);
 
-                        Log.d("BluetoothInput App==>", "Thread already Stop!!!");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    Log.d("BluetoothInput App==>", "Thread already Stop!!!");
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
+            }
+        });
 
-            checkThread.start();
+        checkThread.start();
 
-
+    }
+    private View.OnClickListener start_btn_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            start_bluetooth_scan();
         }
     };
     private View.OnClickListener stop_btn_listener = new View.OnClickListener() {

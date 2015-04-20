@@ -34,7 +34,7 @@ public class FragmentHome extends Fragment {
 
         findAllView();
         setAllListener();
-
+        clearFragmentStack();
 
     }
     private void findAllView(){
@@ -57,7 +57,11 @@ public class FragmentHome extends Fragment {
         rl_camera_background.setOnClickListener(replaceToCamera);
 
     }
-
+    private void clearFragmentStack(){
+        FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        //fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.content_frame,new FragmentBluetooth()).commit();
+    }
 
     private View.OnClickListener replaceToBluetooth = new View.OnClickListener() {
         @Override
