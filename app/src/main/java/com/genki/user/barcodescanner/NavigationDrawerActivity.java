@@ -1,5 +1,8 @@
 package com.genki.user.barcodescanner;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.ActionBarDrawerToggle;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -103,6 +107,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
             case 0:
                 //Toast.makeText(getApplicationContext(),"Home Click",Toast.LENGTH_SHORT).show();
                 fragment = new FragmentHome();
+
                 break;
 
             case 1:
@@ -182,6 +187,36 @@ public class NavigationDrawerActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        int fragmentBackCount=getSupportFragmentManager().getBackStackEntryCount();
+        Log.d("BackStack=",""+fragmentBackCount);
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 && fragmentBackCount==0 ) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("確退出嗎?");
+            builder.setTitle("提示");
+            builder.setNegativeButton("確認", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    NavigationDrawerActivity.this.finish();
+
+                }
+            });
+            builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                }
+            });
+            builder.create().show();
+         }
+        else
+            getSupportFragmentManager().popBackStack();   //FragmentStack裡面有頁面時，POP出來
+        return true;
     }
 
 

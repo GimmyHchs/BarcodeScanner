@@ -77,4 +77,5 @@ public class FragmentHome extends Fragment {
             actionBarActivity.getSupportActionBar().setTitle("Camera");
         }
     };
+
 }
