@@ -195,7 +195,7 @@ public class NavigationDrawerActivity extends ActionBarActivity {
         Log.d("BackStack=",""+fragmentBackCount);
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 && fragmentBackCount==0 ) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("確退出嗎?");
+            builder.setMessage("確認退出嗎?");
             builder.setTitle("提示");
             builder.setNegativeButton("確認", new DialogInterface.OnClickListener() {
                 @Override
