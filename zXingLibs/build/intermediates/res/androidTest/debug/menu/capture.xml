@@ -35,4 +35,4 @@
         android:icon="@android:drawable/ic_menu_help"
         android:orderInCategory="4"
         android:showAsAction="withText"/>
-</menu><!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/menu/capture.xml --><!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/menu/capture.xml -->
+</menu><!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/menu/capture.xml --><!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/menu/capture.xml -->

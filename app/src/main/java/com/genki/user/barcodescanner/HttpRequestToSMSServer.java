@@ -6,6 +6,7 @@ import android.os.Message;
 import android.util.Log;
 
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -40,7 +41,8 @@ public class HttpRequestToSMSServer extends Volley {
     private String name="";
     private String arrived_at="";
     private Handler handler;
-    static  String SMS_SERVER_ADDRESS="http://nov.mynet.com.tw:9095/notify/";
+    static String SMS_SERVER_INFOADDRESS="http://s1.send2me.cc/mobilejson?";
+    static  String SMS_SERVER_ADDRESS="http://s1.send2me.cc/mobile?";
 
     Response.Listener response_listener;
     Response.ErrorListener responseError_listener;
@@ -55,7 +57,7 @@ public class HttpRequestToSMSServer extends Volley {
     public void httpRequest() {
 
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url =SMS_SERVER_ADDRESS+str_scan;
+        String url =SMS_SERVER_INFOADDRESS+"barcode="+str_scan;
         // Request a string response from the provided URL.
 
         StringRequest stringRequest = new StringRequest(url,
@@ -87,7 +89,35 @@ public class HttpRequestToSMSServer extends Volley {
                 Log.e("TAG", error.getMessage(), error);
             }
         });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                3000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(stringRequest);
+
+        String send_url =SMS_SERVER_ADDRESS+"barcode="+str_scan;
+        StringRequest sendRequest = new StringRequest(send_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.i("Success", "Response is: " + response.toString());
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TAG", error.getMessage(), error);
+            }
+        });
+        sendRequest.setRetryPolicy(new DefaultRetryPolicy(
+                3000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(sendRequest);
+
+
     }
     public String getName(){
 

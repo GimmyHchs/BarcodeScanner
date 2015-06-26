@@ -21,4 +21,4 @@
           android:paddingBottom="@dimen/half_padding"
           android:enabled="false"
           android:singleLine="true"/>
-<!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/layout/search_book_contents_header.xml --><!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/layout/search_book_contents_header.xml -->
+<!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/layout/search_book_contents_header.xml --><!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/layout/search_book_contents_header.xml -->

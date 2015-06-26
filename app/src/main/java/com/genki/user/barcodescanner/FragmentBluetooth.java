@@ -176,7 +176,7 @@ public class FragmentBluetooth extends Fragment {
 
     }
     private boolean isFormal(String str) {
-        if (str.length() != 7 || !(str.contains("CC"))) {
+        if (str.length() != 7 || !(str.contains("cc"))) {
             //Log.d("BluetoothInput App==>","錯誤的輸入"+str);
             return false;
         } else

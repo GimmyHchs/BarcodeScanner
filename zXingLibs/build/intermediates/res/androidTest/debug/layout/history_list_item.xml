@@ -19,4 +19,4 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:singleLine="false"/>
 
-</LinearLayout><!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/layout/history_list_item.xml --><!-- From: file:/D:/User/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/layout/history_list_item.xml -->
+</LinearLayout><!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/src/main/res/layout/history_list_item.xml --><!-- From: file:/C:/Users/hchs/AndroidStudioProjects/BarcodeScanner/zXingLibs/build/intermediates/bundles/debug/res/layout/history_list_item.xml -->
